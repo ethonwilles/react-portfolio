@@ -9,12 +9,14 @@ import reducers from "./reducers";
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 import "./style/main.scss";
+import PortfolioContainer from "./components/portfolio-container";
 
 function main() {
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
       <BrowserRouter>
         <App />
+        
       </BrowserRouter>
     </Provider>,
     document.querySelector(".app-wrapper")
