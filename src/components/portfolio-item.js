@@ -1,15 +1,20 @@
-import React, {Component} from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default class PortfolioItem extends Component{
+export default function(props) {
+  // Data that we'll need:
+  // - background image: thumb_image_url
+  // - logo
+  // - description: description
+  // - id: id
 
-    
-    render(){
-        return(
-        <div>
-
-            <h3>{this.props.title}</h3>
-            <h4>{this.props.url}</h4>
-        </div>
-        )
-    }
+  const { id, description, thumb_image_url, logo } = props.item;
+  return (
+    <div>
+        <img src={thumb_image_url} />
+        <img src={logo} />
+      <div>{description}</div>
+      <Link to={`/portfolio/${id}`}>Link</Link>
+    </div>
+  );
 }
