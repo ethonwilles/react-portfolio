@@ -1,4 +1,3 @@
-  
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -27,16 +26,11 @@ export default class PortfolioContainer extends Component {
 
   getPortfolioItems() {
     axios
-      .get("https://ethonwilles.devcamp.space/portfolio/portfolio_items")
+      .get("https://jordan.devcamp.space/portfolio/portfolio_items")
       .then(response => {
-          let portfolioItemsArray = []
-          for (let i =0; i<6; i++){portfolioItemsArray.push(response.data.portfolio_items[2])}
-          
         this.setState({
-          data: portfolioItemsArray
-         
+          data: response.data.portfolio_items
         });
-        
       })
       .catch(error => {
         console.log(error);
@@ -44,9 +38,7 @@ export default class PortfolioContainer extends Component {
   }
 
   portfolioItems() {
-      console.log(this.state.data)
     return this.state.data.map(item => {
-        
       return <PortfolioItem key={item.id} item={item} />;
     });
   }
@@ -61,16 +53,14 @@ export default class PortfolioContainer extends Component {
     }
 
     return (
-      <div>
-        <h2>{this.state.pageTitle}</h2>
-
-        <button onClick={() => this.handleFilter("eCommerce")}>
+      <div className="portfolio-items-wrapper">
+        <button className="btn" onClick={() => this.handleFilter("eCommerce")}>
           eCommerce
         </button>
-        <button onClick={() => this.handleFilter("Scheduling")}>
+        <button className="btn" onClick={() => this.handleFilter("Scheduling")}>
           Scheduling
         </button>
-        <button onClick={() => this.handleFilter("Enterprise")}>
+        <button className="btn" onClick={() => this.handleFilter("Enterprise")}>
           Enterprise
         </button>
 
